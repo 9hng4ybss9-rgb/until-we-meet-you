@@ -13,7 +13,9 @@ sections.forEach(section => {
   const unlockDate = new Date(section.dataset.date);
   unlockDate.setHours(0, 0, 0, 0);
 
-  if (today >= unlockDate) {
-    section.style.display = "block";
+  if (today < unlockDate) {
+    section.classList.add("locked");
+  } else {
+    section.classList.remove("locked");
   }
 });
