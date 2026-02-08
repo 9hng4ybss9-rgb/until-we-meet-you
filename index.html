@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(-45deg, #faf7f5, #f3e6e8, #f7efe9);
+  background: linear-gradient(-45deg, #fdf6f0, #f6e7ea, #fdf2e9);
   background-size: 400% 400%;
   animation: gradient 18s ease infinite;
   color: #333;
@@ -21,76 +21,87 @@ body {
 }
 
 header {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 24px;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  opacity: 0.85;
 }
 
 button {
-  padding: 12px 24px;
-  border-radius: 24px;
-  border: none;
-  background: #d48a8a;
-  color: white;
-  font-size: 1rem;
+  padding:12px 24px;
+  border-radius:24px;
+  border:none;
+  background:#d48a8a;
+  color:white;
+  font-size:1rem;
+  margin-top: 10px;
 }
 
 #content {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 
 .day {
-  background: white;
-  border-radius: 16px;
-  padding: 22px;
-  margin-bottom: 32px;
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:36px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
 .soft-text {
-  opacity: 0.85;
-  font-size: 0.95rem;
-  margin-top: 12px;
+  opacity:0.85;
+  font-size:0.95rem;
+  margin-top:12px;
 }
 
 .avatar-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:22px 0;
 }
 
 .avatar {
-  width: 38%;
-  transition: transform 0.4s ease;
+  width:38%;
+  transition:transform 0.4s ease;
 }
 
 .avatar img {
-  width: 100%;
-  border-radius: 16px;
+  width:100%;
+  border-radius:16px;
 }
 
 .center {
-  font-size: 42px;
-  transition: transform 0.4s ease;
+  font-size:42px;
+  transition:transform 0.4s ease;
 }
 
-/* MOVEMENTS */
+/* MOVEMENT */
 .move-chocolate { transform: translateX(140px); }
 .teddy-bounce { transform: translateY(-40px) scale(1.6); }
 
 .promise {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity:0;
+  transform:scale(0.85);
+  transition:opacity 0.3s ease, transform 0.3s ease;
 }
 .promise.show {
-  opacity: 1;
-  transform: scale(1.05);
+  opacity:1;
+  transform:scale(1.05);
 }
 
 .hug-left-start { transform: translateX(-70px); }
@@ -99,23 +110,45 @@ button {
 .hug-right { transform: translateX(0); }
 
 .val-heart {
-  font-size: 34px;
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  text-align: center;
+  font-size:34px;
+  opacity:0;
+  transform:scale(0.6);
+  transition:opacity 0.3s ease, transform 0.3s ease;
+  text-align:center;
 }
 .val-heart.show {
-  opacity: 1;
-  transform: scale(1.2);
+  opacity:1;
+  transform:scale(1.2);
+}
+
+/* COUNTDOWN */
+.countdown {
+  display:flex;
+  justify-content:space-around;
+  margin:24px 0;
+}
+.count-box {
+  background:#fff5f6;
+  border-radius:16px;
+  padding:16px;
+  width:45%;
+}
+.count-box h3 {
+  margin:0;
+  font-size:1rem;
+}
+.count-box p {
+  font-size:1.4rem;
+  margin:8px 0 0;
+  font-weight:600;
 }
 
 /* HEARTS */
 .heart {
-  position: fixed;
-  font-size: 18px;
-  animation: floatUp 3s ease forwards;
-  pointer-events: none;
+  position:fixed;
+  font-size:18px;
+  animation:floatUp 3s ease forwards;
+  pointer-events:none;
 }
 @keyframes floatUp {
   from {opacity:1; transform:translateY(0);}
@@ -129,8 +162,23 @@ button {
 <header>
   <div>
     <h1>Until We Meet You</h1>
-    <p>Love doesn’t run on a calendar.</p>
-    <button onclick="scrollToContent()">Begin</button>
+    <p>
+      So much has changed.<br>
+      And so much is still waiting for us.
+    </p>
+
+    <div class="countdown">
+      <div class="count-box">
+        <h3>Our Anniversary 💍</h3>
+        <p id="annivCount"></p>
+      </div>
+      <div class="count-box">
+        <h3>We Meet You 👶</h3>
+        <p id="babyCount"></p>
+      </div>
+    </div>
+
+    <button onclick="scrollToContent()">Start from today</button>
   </div>
 </header>
 
@@ -139,25 +187,27 @@ button {
 <!-- CHOCOLATE -->
 <section class="day">
 <h2>Chocolate Day 🍫</h2>
+<p class="soft-text">I missed a couple of days… but not the feeling.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="chocolate" class="center">🍫</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="giveChocolate(event)">Tap for sweetness</button>
+<button onclick="giveChocolate(event)">Tap</button>
 <p id="chocoText" class="soft-text" style="display:none;">Just because 💗</p>
 </section>
 
 <!-- TEDDY -->
 <section class="day">
 <h2>Teddy Day 🧸</h2>
+<p class="soft-text">For comfort, on the days I can’t be right there.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="teddy" class="center">🧸</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="giveTeddy(event)">Tap gently</button>
-<p id="teddyText" class="soft-text" style="display:none;">For comfort.</p>
+<button onclick="giveTeddy(event)">Tap</button>
+<p id="teddyText" class="soft-text" style="display:none;">Always yours.</p>
 </section>
 
 <!-- PROMISE -->
@@ -167,13 +217,14 @@ button {
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="nextPromise(event)">Tap gently</button>
+<button onclick="nextPromise(event)">Tap slowly</button>
 <p id="promiseText" class="soft-text promise"></p>
 </section>
 
 <!-- HUG -->
 <section class="day">
 <h2>Hug Day 🤍</h2>
+<p class="soft-text">For the moments that feel heavy.</p>
 <div class="avatar-row">
   <div id="hugHim" class="avatar hug-left-start">
     <img src="images/avatars/him_blazer.jpg.PNG">
@@ -182,7 +233,7 @@ button {
     <img src="images/avatars/her_maternity.jpg.PNG">
   </div>
 </div>
-<button onclick="hug(event)">Tap when you need it</button>
+<button onclick="hug(event)">Tap</button>
 </section>
 
 <!-- VALENTINE -->
@@ -192,6 +243,7 @@ button {
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
+<p class="soft-text">Still you. Still us.</p>
 <button onclick="valentine(event)">Tap</button>
 <div id="valHeart" class="val-heart">💗</div>
 </section>
@@ -204,61 +256,77 @@ function scrollToContent() {
 }
 
 function spawnHeart(e) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerText = "💗";
-  h.style.left = e.clientX + "px";
-  h.style.top = e.clientY + "px";
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText="💗";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
   document.body.appendChild(h);
-  setTimeout(() => h.remove(), 3000);
+  setTimeout(()=>h.remove(),3000);
 }
 
-function giveChocolate(e) {
+function giveChocolate(e){
   e.stopPropagation();
-  const c = document.getElementById("chocolate");
+  const c=document.getElementById("chocolate");
   c.classList.remove("move-chocolate");
   void c.offsetWidth;
   c.classList.add("move-chocolate");
-  document.getElementById("chocoText").style.display = "block";
+  document.getElementById("chocoText").style.display="block";
 }
 
-function giveTeddy(e) {
+function giveTeddy(e){
   e.stopPropagation();
-  const t = document.getElementById("teddy");
+  const t=document.getElementById("teddy");
   t.classList.remove("teddy-bounce");
   void t.offsetWidth;
   t.classList.add("teddy-bounce");
-  document.getElementById("teddyText").style.display = "block";
+  document.getElementById("teddyText").style.display="block";
 }
 
-const promises = [
-  "I promise to listen.",
-  "I promise to learn.",
-  "I promise to stay."
+const promises=[
+  "I promise to listen — even when it’s hard.",
+  "I promise to learn — even when I’m wrong.",
+  "I promise to stay — in every version of us."
 ];
-let promiseIndex = 0;
-
-function nextPromise(e) {
+let pi=0;
+function nextPromise(e){
   e.stopPropagation();
-  if (promiseIndex < promises.length) {
-    const p = document.getElementById("promiseText");
-    p.innerText = promises[promiseIndex++];
+  if(pi<promises.length){
+    const p=document.getElementById("promiseText");
+    p.innerText=promises[pi++];
     p.classList.remove("show");
     void p.offsetWidth;
     p.classList.add("show");
   }
 }
 
-function hug(e) {
+function hug(e){
   e.stopPropagation();
   document.getElementById("hugHim").classList.add("hug-left");
   document.getElementById("hugHer").classList.add("hug-right");
 }
 
-function valentine(e) {
+function valentine(e){
   e.stopPropagation();
   document.getElementById("valHeart").classList.add("show");
 }
+
+/* COUNTDOWNS */
+function updateCountdowns(){
+  const now=new Date();
+  const anniv=new Date(now.getFullYear(),2,2);   // March 2
+  const baby=new Date(now.getFullYear(),2,15);   // March 15
+
+  if(now>anniv) anniv.setFullYear(now.getFullYear()+1);
+  if(now>baby) baby.setFullYear(now.getFullYear()+1);
+
+  const d1=Math.ceil((anniv-now)/(1000*60*60*24));
+  const d2=Math.ceil((baby-now)/(1000*60*60*24));
+
+  document.getElementById("annivCount").innerText=d1+" days";
+  document.getElementById("babyCount").innerText=d2+" days";
+}
+updateCountdowns();
 </script>
 
 </body>
