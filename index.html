@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Until We Meet You</title>
+<title>For You</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -30,8 +30,8 @@ header {
 }
 
 header h1 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
+  font-size: 2.3rem;
+  margin-bottom: 8px;
 }
 
 header p {
@@ -66,6 +66,7 @@ button {
   opacity:0.85;
   font-size:0.95rem;
   margin-top:12px;
+  line-height: 1.5;
 }
 
 .avatar-row {
@@ -77,7 +78,6 @@ button {
 
 .avatar {
   width:38%;
-  transition:transform 0.4s ease;
 }
 
 .avatar img {
@@ -90,13 +90,14 @@ button {
   transition:transform 0.4s ease;
 }
 
-/* MOVEMENT */
+/* SIMPLE MOVEMENTS */
 .move-chocolate { transform: translateX(140px); }
-.teddy-bounce { transform: translateY(-40px) scale(1.6); }
+.teddy-bounce { transform: translateY(-35px) scale(1.5); }
 
+/* PROMISE */
 .promise {
   opacity:0;
-  transform:scale(0.85);
+  transform:scale(0.9);
   transition:opacity 0.3s ease, transform 0.3s ease;
 }
 .promise.show {
@@ -104,11 +105,13 @@ button {
   transform:scale(1.05);
 }
 
-.hug-left-start { transform: translateX(-70px); }
-.hug-right-start { transform: translateX(70px); }
+/* HUG */
+.hug-left-start { transform: translateX(-60px); }
+.hug-right-start { transform: translateX(60px); }
 .hug-left { transform: translateX(0); }
 .hug-right { transform: translateX(0); }
 
+/* VALENTINE HEART */
 .val-heart {
   font-size:34px;
   opacity:0;
@@ -125,12 +128,12 @@ button {
 .countdown {
   display:flex;
   justify-content:space-around;
-  margin:24px 0;
+  margin:28px 0;
 }
 .count-box {
   background:#fff5f6;
-  border-radius:16px;
-  padding:16px;
+  border-radius:18px;
+  padding:18px;
   width:45%;
 }
 .count-box h3 {
@@ -138,8 +141,8 @@ button {
   font-size:1rem;
 }
 .count-box p {
-  font-size:1.4rem;
-  margin:8px 0 0;
+  font-size:1.3rem;
+  margin:10px 0 0;
   font-weight:600;
 }
 
@@ -161,24 +164,25 @@ button {
 
 <header>
   <div>
-    <h1>Until We Meet You</h1>
+    <h1>For You</h1>
     <p>
-      So much has changed.<br>
-      And so much is still waiting for us.
+      Not for a day.<br>
+      Not for an occasion.<br>
+      Just for you.
     </p>
 
     <div class="countdown">
       <div class="count-box">
-        <h3>Our Anniversary 💍</h3>
+        <h3>Our Journey 💍</h3>
         <p id="annivCount"></p>
       </div>
       <div class="count-box">
-        <h3>We Meet You 👶</h3>
+        <h3>This Chapter 🤍</h3>
         <p id="babyCount"></p>
       </div>
     </div>
 
-    <button onclick="scrollToContent()">Start from today</button>
+    <button onclick="scrollToContent()">Take your time</button>
   </div>
 </header>
 
@@ -187,7 +191,9 @@ button {
 <!-- CHOCOLATE -->
 <section class="day">
 <h2>Chocolate Day 🍫</h2>
-<p class="soft-text">I missed a couple of days… but not the feeling.</p>
+<p class="soft-text">
+I missed the calendar — not the feeling.
+</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="chocolate" class="center">🍫</div>
@@ -200,14 +206,16 @@ button {
 <!-- TEDDY -->
 <section class="day">
 <h2>Teddy Day 🧸</h2>
-<p class="soft-text">For comfort, on the days I can’t be right there.</p>
+<p class="soft-text">
+For comfort — especially on the quiet days.
+</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="teddy" class="center">🧸</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
 <button onclick="giveTeddy(event)">Tap</button>
-<p id="teddyText" class="soft-text" style="display:none;">Always yours.</p>
+<p id="teddyText" class="soft-text" style="display:none;">Always here.</p>
 </section>
 
 <!-- PROMISE -->
@@ -224,7 +232,9 @@ button {
 <!-- HUG -->
 <section class="day">
 <h2>Hug Day 🤍</h2>
-<p class="soft-text">For the moments that feel heavy.</p>
+<p class="soft-text">
+For the moments that feel heavier than words.
+</p>
 <div class="avatar-row">
   <div id="hugHim" class="avatar hug-left-start">
     <img src="images/avatars/him_blazer.jpg.PNG">
@@ -243,9 +253,31 @@ button {
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<p class="soft-text">Still you. Still us.</p>
+<p class="soft-text">
+Still you. Still us.
+</p>
 <button onclick="valentine(event)">Tap</button>
 <div id="valHeart" class="val-heart">💗</div>
+</section>
+
+<!-- ANNIVERSARY -->
+<section class="day">
+<h2>Our Anniversary 💍</h2>
+<p class="soft-text">
+Two years of learning each other.<br>
+And I’d still choose you — again.
+</p>
+</section>
+
+<!-- BABY / HER -->
+<section class="day">
+<h2>This Chapter 🤍</h2>
+<p class="soft-text">
+Watching you become a mother<br>
+has made me fall in love with you in a new way.<br><br>
+Your strength. Your patience. Your heart.<br>
+All of it.
+</p>
 </section>
 
 </section>
@@ -311,20 +343,21 @@ function valentine(e){
   document.getElementById("valHeart").classList.add("show");
 }
 
-/* COUNTDOWNS */
+/* REVERSE COUNTDOWNS */
 function updateCountdowns(){
+  const start=new Date(2024,2,2); // anniversary start
   const now=new Date();
-  const anniv=new Date(now.getFullYear(),2,2);   // March 2
-  const baby=new Date(now.getFullYear(),2,15);   // March 15
+  const babyDue=new Date(2024,2,15);
 
-  if(now>anniv) anniv.setFullYear(now.getFullYear()+1);
-  if(now>baby) baby.setFullYear(now.getFullYear()+1);
+  const daysTogether=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
+  const daysIntoJourney=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
+  const pregnancyProgress=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
 
-  const d1=Math.ceil((anniv-now)/(1000*60*60*24));
-  const d2=Math.ceil((baby-now)/(1000*60*60*24));
+  document.getElementById("annivCount").innerText =
+    daysTogether + " days together";
 
-  document.getElementById("annivCount").innerText=d1+" days";
-  document.getElementById("babyCount").innerText=d2+" days";
+  document.getElementById("babyCount").innerText =
+    "So far, so strong";
 }
 updateCountdowns();
 </script>
