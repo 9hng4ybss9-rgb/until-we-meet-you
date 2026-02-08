@@ -7,9 +7,7 @@ function scrollToContent() {
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-const sections = document.querySelectorAll(".day");
-
-sections.forEach(section => {
+document.querySelectorAll(".day").forEach(section => {
   const unlockDate = new Date(section.dataset.date);
   unlockDate.setHours(0, 0, 0, 0);
 
