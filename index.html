@@ -30,16 +30,6 @@
       padding: 20px;
     }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #666;
-      margin-bottom: 20px;
-    }
-
     button {
       padding: 12px 24px;
       border-radius: 24px;
@@ -65,18 +55,13 @@
     .soft-text {
       font-size: 0.9rem;
       opacity: 0.8;
+      margin-top: 10px;
     }
 
-    .always {
-      background: rgba(255,255,255,0.95);
-      border: 1px dashed #e3cfcf;
-    }
-
-    /* AVATARS */
     .avatar-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       margin: 20px 0;
       gap: 10px;
     }
@@ -90,25 +75,16 @@
       border-radius: 16px;
     }
 
-    /* CHOCOLATE */
-    #chocolate {
-      font-size: 32px;
-      transition: transform 0.9s ease;
-    }
-
-    .move-chocolate {
-      transform: translateX(120px);
-    }
-
-    /* TEDDY */
-    #teddy {
+    /* INTERACTION ELEMENTS */
+    #chocolate, #teddy, #heart-baby {
       font-size: 36px;
-      transition: transform 0.4s ease;
+      transition: transform 0.8s ease;
     }
 
-    .teddy-pop {
-      transform: scale(1.3);
-    }
+    .move-chocolate { transform: translateX(120px); }
+    .teddy-bounce { transform: translateY(-20px) scale(1.3); }
+    .hug-close { transform: translateX(30px); }
+    .glow { filter: drop-shadow(0 0 10px pink); }
 
     /* HEARTS */
     .heart {
@@ -130,82 +106,75 @@
 <header>
   <div>
     <h1>Until We Meet You</h1>
-    <p>
-      I may have missed a couple of days…<br>
-      but love doesn’t run on a calendar.
-    </p>
+    <p>Love doesn’t run on a calendar.</p>
     <button onclick="scrollToContent()">Begin</button>
   </div>
 </header>
 
 <section id="content">
 
-  <!-- ALWAYS PRESENT -->
-  <section class="day always">
-    <h2>For You, Anytime 🌿</h2>
-    <p>
-      This space stays with you — on busy days, slow days,
-      and everything in between.
-    </p>
-    <p class="soft-text">
-      Little moments will live here as the days pass.
-    </p>
-  </section>
-
   <!-- CHOCOLATE DAY -->
   <section class="day">
     <h2>Chocolate Day 🍫</h2>
-    <p>Better late than never.</p>
-
     <div class="avatar-row">
-      <div class="avatar">
-        <img src="images/avatars/him_blazer.jpg.PNG">
-      </div>
-
+      <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
       <div id="chocolate">🍫</div>
-
-      <div class="avatar">
-        <img src="images/avatars/her_maternity.jpg.PNG">
-      </div>
+      <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
     </div>
-
-    <button onclick="giveChocolate(event)">Give her chocolate</button>
-
-    <p id="choco-text" class="soft-text" style="display:none;">
-      A little sweetness, just because 💗
-    </p>
+    <button onclick="giveChocolate(event)">Tap for a little sweetness</button>
+    <p id="choco-text" class="soft-text" style="display:none;">Just because 💗</p>
   </section>
 
   <!-- TEDDY DAY -->
   <section class="day">
     <h2>Teddy Day 🧸</h2>
-    <p>Something soft for you.</p>
-
     <div class="avatar-row">
-      <div class="avatar">
-        <img src="images/avatars/him_blazer.jpg.PNG">
-      </div>
-
+      <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
       <div id="teddy">🧸</div>
-
-      <div class="avatar">
-        <img src="images/avatars/her_maternity.jpg.PNG">
-      </div>
+      <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
     </div>
-
-    <button onclick="giveTeddy(event)">Give her a teddy</button>
-
-    <p id="teddy-text" class="soft-text" style="display:none;">
-      For comfort, always.
-    </p>
+    <button onclick="giveTeddy(event)">Tap for comfort</button>
+    <p id="teddy-text" class="soft-text" style="display:none;">Always here.</p>
   </section>
 
-  <!-- PLACEHOLDERS -->
-  <section class="day"><h2>Promise Day 💌</h2><p class="soft-text">Coming soon…</p></section>
-  <section class="day"><h2>Hug Day 🤍</h2><p class="soft-text">Coming soon…</p></section>
-  <section class="day"><h2>Valentine’s Day ❤️</h2><p class="soft-text">Coming soon…</p></section>
-  <section class="day"><h2>Our Anniversary 💍</h2><p class="soft-text">Coming soon…</p></section>
-  <section class="day"><h2>Until We Meet You 👶</h2><p class="soft-text">Coming soon…</p></section>
+  <!-- PROMISE DAY -->
+  <section class="day">
+    <h2>Promise Day 💌</h2>
+    <button onclick="nextPromise(event)">Tap gently</button>
+    <p id="promise" class="soft-text"></p>
+  </section>
+
+  <!-- HUG DAY -->
+  <section class="day">
+    <h2>Hug Day 🤍</h2>
+    <div class="avatar-row">
+      <div id="hug-him" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+      <div id="hug-her" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+    </div>
+    <button onclick="hug(event)">Tap when you need it</button>
+  </section>
+
+  <!-- VALENTINE -->
+  <section class="day">
+    <h2>Valentine’s Day ❤️</h2>
+    <p class="soft-text">Quiet. Deep. Ours.</p>
+  </section>
+
+  <!-- ANNIVERSARY -->
+  <section class="day">
+    <h2>Our Anniversary 💍</h2>
+    <button onclick="anniversary(event)">Tap and smile</button>
+    <p id="anniv-text" class="soft-text" style="display:none;">I choose you. Every version of us.</p>
+  </section>
+
+  <!-- DUE DATE -->
+  <section class="day">
+    <h2>Until We Meet You 👶</h2>
+    <div style="text-align:center;">
+      <div id="heart-baby">💗</div>
+      <p class="soft-text">No rush. Just love.</p>
+    </div>
+  </section>
 
 </section>
 
