@@ -23,10 +23,10 @@ body {
 
 header {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 button {
@@ -39,7 +39,7 @@ button {
 }
 
 #content {
-  max-width: 850px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
 }
@@ -48,60 +48,56 @@ button {
   background: white;
   border-radius: 16px;
   padding: 22px;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .soft-text {
-  opacity: 0.8;
   font-size: 0.95rem;
+  opacity: 0.85;
 }
 
 .avatar-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   margin: 20px 0;
 }
 
 .avatar {
   width: 38%;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
 
 .avatar img {
-  width: 100%;
-  border-radius: 16px;
+  width:100%;
+  border-radius:16px;
 }
 
-/* INTERACTION ELEMENTS */
-.center-item {
-  font-size: 40px;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+.center {
+  font-size:42px;
+  transition: transform 0.7s ease, opacity 0.7s ease;
 }
 
-.move-chocolate { transform: translateX(120px); }
-.teddy-bounce { transform: translateY(-30px) scale(1.4); }
+/* INTERACTIONS */
+.move-chocolate { transform: translateX(140px); }
+.teddy-bounce { transform: translateY(-35px) scale(1.5); }
 
-.hug-left { transform: translateX(25px); }
-.hug-right { transform: translateX(-25px); }
+.hug-left { transform: translateX(60px); }
+.hug-right { transform: translateX(-60px); }
 
-.promise-show { opacity: 1; }
-
-.glow {
-  filter: drop-shadow(0 0 12px pink);
-}
+.glow { filter: drop-shadow(0 0 14px pink); }
 
 /* HEARTS */
 .heart {
   position: fixed;
   font-size: 18px;
   animation: floatUp 3s ease forwards;
-  pointer-events: none;
+  pointer-events:none;
 }
 
 @keyframes floatUp {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-80px); }
+  from { opacity:1; transform:translateY(0); }
+  to { opacity:0; transform:translateY(-90px); }
 }
 </style>
 </head>
@@ -123,7 +119,7 @@ button {
 <h2>Chocolate Day 🍫</h2>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="chocolate" class="center-item">🍫</div>
+  <div id="chocolate" class="center">🍫</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
 <button onclick="giveChocolate(event)">Tap for sweetness</button>
@@ -135,16 +131,20 @@ button {
 <h2>Teddy Day 🧸</h2>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="teddy" class="center-item">🧸</div>
+  <div id="teddy" class="center">🧸</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
 <button onclick="giveTeddy(event)">Tap gently</button>
-<p id="teddyText" class="soft-text" style="display:none;">For comfort.</p>
+<p id="teddyText" class="soft-text" style="display:none;">For comfort, always.</p>
 </section>
 
 <!-- PROMISE -->
 <section class="day">
 <h2>Promise Day 💌</h2>
+<div class="avatar-row">
+  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+</div>
 <button onclick="nextPromise(event)">Tap to read</button>
 <p id="promiseText" class="soft-text"></p>
 </section>
@@ -153,8 +153,12 @@ button {
 <section class="day">
 <h2>Hug Day 🤍</h2>
 <div class="avatar-row">
-  <div id="hugHim" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="hugHer" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+  <div id="hugHim" class="avatar" style="transform:translateX(-80px)">
+    <img src="images/avatars/him_blazer.jpg.PNG">
+  </div>
+  <div id="hugHer" class="avatar" style="transform:translateX(80px)">
+    <img src="images/avatars/her_maternity.jpg.PNG">
+  </div>
 </div>
 <button onclick="hug(event)">Tap when you need it</button>
 </section>
@@ -168,14 +172,18 @@ button {
 <!-- ANNIVERSARY -->
 <section class="day">
 <h2>Our Anniversary 💍</h2>
+<div class="avatar-row">
+  <div id="annivHim" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div id="annivHer" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+</div>
 <button onclick="anniversary(event)">Tap & smile</button>
-<p id="annivText" class="soft-text" style="display:none;">I choose you. Always.</p>
+<p id="annivText" class="soft-text" style="display:none;">I choose you. Every time.</p>
 </section>
 
 <!-- DUE DATE -->
 <section class="day">
 <h2>Until We Meet You 👶</h2>
-<div id="babyHeart" class="center-item glow">💗</div>
+<div id="babyHeart" class="center glow">💗</div>
 <p class="soft-text">No rush. Just love.</p>
 </section>
 
@@ -189,13 +197,13 @@ function scrollToContent() {
 }
 
 function spawnHeart(e) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerText = "💗";
-  h.style.left = e.clientX + "px";
-  h.style.top = e.clientY + "px";
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText="💗";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
   document.body.appendChild(h);
-  setTimeout(() => h.remove(), 3000);
+  setTimeout(()=>h.remove(),3000);
 }
 </script>
 
