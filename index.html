@@ -39,13 +39,13 @@ header p {
 }
 
 button {
-  padding:12px 24px;
-  border-radius:24px;
+  padding:12px 26px;
+  border-radius:26px;
   border:none;
   background:#d48a8a;
   color:white;
   font-size:1rem;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 #content {
@@ -56,8 +56,8 @@ button {
 
 .day {
   background:white;
-  border-radius:20px;
-  padding:24px;
+  border-radius:22px;
+  padding:26px;
   margin-bottom:36px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
@@ -66,35 +66,34 @@ button {
   opacity:0.85;
   font-size:0.95rem;
   margin-top:12px;
-  line-height: 1.5;
+  line-height:1.55;
 }
 
 .avatar-row {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:22px 0;
+  margin:24px 0;
 }
 
 .avatar {
   width:38%;
+  transition:transform 0.4s ease;
 }
 
 .avatar img {
   width:100%;
-  border-radius:16px;
+  border-radius:18px;
 }
 
 .center {
   font-size:42px;
-  transition:transform 0.4s ease;
 }
 
-/* SIMPLE MOVEMENTS */
+/* MOVEMENT */
 .move-chocolate { transform: translateX(140px); }
 .teddy-bounce { transform: translateY(-35px) scale(1.5); }
 
-/* PROMISE */
 .promise {
   opacity:0;
   transform:scale(0.9);
@@ -105,13 +104,12 @@ button {
   transform:scale(1.05);
 }
 
-/* HUG */
+/* HUG / KISS */
 .hug-left-start { transform: translateX(-60px); }
 .hug-right-start { transform: translateX(60px); }
 .hug-left { transform: translateX(0); }
 .hug-right { transform: translateX(0); }
 
-/* VALENTINE HEART */
 .val-heart {
   font-size:34px;
   opacity:0;
@@ -191,30 +189,26 @@ button {
 <!-- CHOCOLATE -->
 <section class="day">
 <h2>Chocolate Day 🍫</h2>
-<p class="soft-text">
-I missed the calendar — not the feeling.
-</p>
+<p class="soft-text">I missed the calendar — not the feeling.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="chocolate" class="center">🍫</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="giveChocolate(event)">Tap</button>
+<button onclick="giveChocolate(event)">Take this</button>
 <p id="chocoText" class="soft-text" style="display:none;">Just because 💗</p>
 </section>
 
 <!-- TEDDY -->
 <section class="day">
 <h2>Teddy Day 🧸</h2>
-<p class="soft-text">
-For comfort — especially on the quiet days.
-</p>
+<p class="soft-text">For comfort — especially on the quiet days.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="teddy" class="center">🧸</div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="giveTeddy(event)">Tap</button>
+<button onclick="giveTeddy(event)">Hold this close</button>
 <p id="teddyText" class="soft-text" style="display:none;">Always here.</p>
 </section>
 
@@ -225,16 +219,14 @@ For comfort — especially on the quiet days.
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="nextPromise(event)">Tap slowly</button>
+<button id="promiseBtn" onclick="nextPromise(event)">Read my promise</button>
 <p id="promiseText" class="soft-text promise"></p>
 </section>
 
 <!-- HUG -->
 <section class="day">
 <h2>Hug Day 🤍</h2>
-<p class="soft-text">
-For the moments that feel heavier than words.
-</p>
+<p class="soft-text">For the moments that feel heavier than words.</p>
 <div class="avatar-row">
   <div id="hugHim" class="avatar hug-left-start">
     <img src="images/avatars/him_blazer.jpg.PNG">
@@ -243,7 +235,22 @@ For the moments that feel heavier than words.
     <img src="images/avatars/her_maternity.jpg.PNG">
   </div>
 </div>
-<button onclick="hug(event)">Tap</button>
+<button onclick="hug(event)">Come here</button>
+</section>
+
+<!-- KISS -->
+<section class="day">
+<h2>Kiss Day 💋</h2>
+<div class="avatar-row">
+  <div id="kissHim" class="avatar hug-left-start">
+    <img src="images/avatars/him_blazer.jpg.PNG">
+  </div>
+  <div id="kissHer" class="avatar hug-right-start">
+    <img src="images/avatars/her_maternity.jpg.PNG">
+  </div>
+</div>
+<button onclick="kiss(event)">Lean in</button>
+<div id="kissMark" class="val-heart">💋</div>
 </section>
 
 <!-- VALENTINE -->
@@ -253,10 +260,8 @@ For the moments that feel heavier than words.
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<p class="soft-text">
-Still you. Still us.
-</p>
-<button onclick="valentine(event)">Tap</button>
+<p class="soft-text">Still you. Still us.</p>
+<button onclick="valentine(event)">Stay with me</button>
 <div id="valHeart" class="val-heart">💗</div>
 </section>
 
@@ -269,14 +274,13 @@ And I’d still choose you — again.
 </p>
 </section>
 
-<!-- BABY / HER -->
+<!-- THIS CHAPTER -->
 <section class="day">
 <h2>This Chapter 🤍</h2>
 <p class="soft-text">
 Watching you become a mother<br>
 has made me fall in love with you in a new way.<br><br>
-Your strength. Your patience. Your heart.<br>
-All of it.
+Your strength. Your patience. Your heart.
 </p>
 </section>
 
@@ -323,12 +327,22 @@ const promises=[
 let pi=0;
 function nextPromise(e){
   e.stopPropagation();
+  const p=document.getElementById("promiseText");
+  const btn=document.getElementById("promiseBtn");
+
   if(pi<promises.length){
-    const p=document.getElementById("promiseText");
     p.innerText=promises[pi++];
     p.classList.remove("show");
     void p.offsetWidth;
     p.classList.add("show");
+
+    if(pi<promises.length){
+      btn.innerText="Read the next one";
+    } else {
+      btn.innerText="That’s all 🤍";
+    }
+  } else {
+    btn.style.display="none";
   }
 }
 
@@ -338,20 +352,24 @@ function hug(e){
   document.getElementById("hugHer").classList.add("hug-right");
 }
 
+function kiss(e){
+  e.stopPropagation();
+  document.getElementById("kissHim").classList.add("hug-left");
+  document.getElementById("kissHer").classList.add("hug-right");
+  document.getElementById("kissMark").classList.add("show");
+}
+
 function valentine(e){
   e.stopPropagation();
   document.getElementById("valHeart").classList.add("show");
 }
 
-/* REVERSE COUNTDOWNS */
+/* REFLECTIVE COUNTDOWN */
 function updateCountdowns(){
-  const start=new Date(2024,2,2); // anniversary start
+  const start=new Date(2024,2,2);
   const now=new Date();
-  const babyDue=new Date(2024,2,15);
 
   const daysTogether=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
-  const daysIntoJourney=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
-  const pregnancyProgress=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
 
   document.getElementById("annivCount").innerText =
     daysTogether + " days together";
