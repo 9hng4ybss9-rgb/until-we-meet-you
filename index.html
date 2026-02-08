@@ -1,113 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Until We Meet You</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #faf7f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff, #f3ebe7);
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      background: #c47a6a;
+      color: white;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      display: none;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    .divider {
+      margin: 80px auto;
+      text-align: center;
+      color: #bbb;
+    }
+  </style>
 </head>
+
 <body>
 
-<section class="hero">
-  <h1>Until We Meet You</h1>
-  <p>For you. For me. For the little one we’re waiting to meet.</p>
-  <button onclick="scrollToContent()">Begin</button>
-</section>
-
-<section id="content">
-
-  <h2>Us</h2>
-  <p class="soft">
-    Before anything else,<br>
-    we were partners.<br><br>
-    And we still are.
-  </p>
-  <img src="images/couple1.jpg">
-  <img src="images/couple2.jpg">
-
-  <h2>For You</h2>
-  <p class="soft">
-    You are doing something extraordinary.<br><br>
-    You don’t have to be strong every day.<br><br>
-    I see you.
-  </p>
-  <img src="images/her1.jpg">
-
-  <h2>Valentine’s Week</h2>
-  <p class="note">
-    I may have missed Rose Day and Propose Day…<br>
-    but loving you has never been on a schedule.<br><br>
-    So here I am. Better late than never 🌸
-  </p>
-
-  <!-- Chocolate Day -->
-  <div class="day" data-date="2026-02-09">
-    <h3>🍫 Chocolate Day</h3>
+<header>
+  <div>
+    <h1>Until We Meet You</h1>
     <p>
-      I missed a couple of days…<br><br>
-      but when things feel heavy,<br>
-      comfort matters more than timing 🍫
+      This started a little late…<br>
+      but love doesn’t run on a calendar.
     </p>
+    <button onclick="scrollToContent()">Begin</button>
   </div>
+</header>
 
-  <!-- Teddy Day -->
-  <div class="day" data-date="2026-02-10">
-    <h3>🧸 Teddy Day</h3>
-    <button onclick="this.nextElementSibling.style.display='block'">A hug for you</button>
-    <p class="hidden">
-      This is me showing up —<br>
-      even when I’m late.
-    </p>
-  </div>
+<div id="content">
 
-  <!-- Promise Day -->
-  <div class="day" data-date="2026-02-11">
-    <h3>💌 Promise Day</h3>
-    <ul>
-      <li>I’ll learn with you</li>
-      <li>I’ll pause before reacting</li>
-      <li>I’ll stay</li>
-    </ul>
-  </div>
-
-  <!-- Hug Day -->
-  <div class="day" data-date="2026-02-12">
-    <h3>🤗 Hug Day</h3>
+  <!-- US -->
+  <section class="day" data-date="2025-02-10">
+    <h2>Us</h2>
     <p>
-      Some days don’t need fixing.<br><br>
-      They just need closeness.
+      Before everything changed.<br>
+      Before we became “almost parents”.<br>
+      Just us — still us.
     </p>
-  </div>
+    <img src="images/couple_old.jpg.jpg" />
+    <img src="images/couple_maternity1.jpg.JPEG" />
+  </section>
 
-  <!-- Valentine’s Day -->
-  <div class="day" data-date="2026-02-14">
-    <h3>❤️ Valentine’s Day</h3>
+  <div class="divider">• • •</div>
+
+  <!-- CHOCOLATE DAY -->
+  <section class="day" data-date="2025-02-10">
+    <h2>Chocolate Day 🍫</h2>
     <p>
-      This isn’t about a day.<br><br>
-      It’s about being here —<br>
-      and choosing you anyway.
+      I missed Rose Day. I missed Propose Day.<br>
+      Apparently romance needs reminders now 😅<br><br>
+      So here I am — a little late, still very in love.
     </p>
-  </div>
+  </section>
 
-  <!-- Anniversary -->
-  <div class="day" data-date="2026-03-02">
-    <h3>💍 Our Anniversary</h3>
+  <div class="divider">• • •</div>
+
+  <!-- FOR YOU -->
+  <section class="day" data-date="2025-02-11">
+    <h2>For You</h2>
     <p>
-      I would still choose you —<br>
-      knowing what we’ve grown through.
+      Not just because you’re carrying our baby.<br>
+      But because you are strong, calm, patient —<br>
+      even on days you don’t feel like it.
     </p>
-  </div>
+    <img src="images/her_maternity.jpg.JPEG" />
+  </section>
 
-  <!-- Due Date -->
-  <div class="day" data-date="2026-03-15">
-    <h3>👶 When the Time Comes</h3>
+  <div class="divider">• • •</div>
+
+  <!-- VALENTINE -->
+  <section class="day" data-date="2025-02-14">
+    <h2>Valentine’s Day ❤️</h2>
     <p>
-      There’s no deadline on love.<br><br>
-      We’ll meet you when we meet you.
+      This year looks different.<br>
+      Quieter. Deeper.<br><br>
+      And I wouldn’t trade it for anything.
     </p>
-  </div>
+    <img src="images/couple_maternity2.jpg.JPEG" />
+  </section>
 
-</section>
+  <div class="divider">• • •</div>
+
+  <!-- ANNIVERSARY -->
+  <section class="day" data-date="2025-03-02">
+    <h2>Our Anniversary</h2>
+    <p>
+      Another year of choosing each other.<br>
+      Even when we’re tired.<br>
+      Even when we’re learning.
+    </p>
+  </section>
+
+  <div class="divider">• • •</div>
+
+  <!-- DUE DATE -->
+  <section class="day" data-date="2025-03-15">
+    <h2>Until We Meet You</h2>
+    <p>
+      We don’t know your face yet.<br>
+      But we already know this:<br><br>
+      You are so deeply loved.
+    </p>
+  </section>
+
+</div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
