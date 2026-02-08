@@ -31,11 +31,6 @@ header {
 
 header h1 {
   font-size: 2.3rem;
-  margin-bottom: 8px;
-}
-
-header p {
-  opacity: 0.85;
 }
 
 button {
@@ -60,12 +55,31 @@ button {
   padding:26px;
   margin-bottom:36px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+/* LOCKED STATE */
+.day.locked {
+  filter: blur(4px);
+  pointer-events: none;
+}
+.day.locked::after {
+  content: attr(data-label);
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.75);
+  font-size:1.1rem;
+  color:#555;
+  border-radius:22px;
+  filter:none;
 }
 
 .soft-text {
   opacity:0.85;
   font-size:0.95rem;
-  margin-top:12px;
   line-height:1.55;
 }
 
@@ -90,7 +104,7 @@ button {
   font-size:42px;
 }
 
-/* MOVEMENT */
+/* MOVEMENTS */
 .move-chocolate { transform: translateX(140px); }
 .teddy-bounce { transform: translateY(-35px) scale(1.5); }
 
@@ -104,7 +118,6 @@ button {
   transform:scale(1.05);
 }
 
-/* HUG / KISS */
 .hug-left-start { transform: translateX(-60px); }
 .hug-right-start { transform: translateX(60px); }
 .hug-left { transform: translateX(0); }
@@ -122,28 +135,6 @@ button {
   transform:scale(1.2);
 }
 
-/* COUNTDOWN */
-.countdown {
-  display:flex;
-  justify-content:space-around;
-  margin:28px 0;
-}
-.count-box {
-  background:#fff5f6;
-  border-radius:18px;
-  padding:18px;
-  width:45%;
-}
-.count-box h3 {
-  margin:0;
-  font-size:1rem;
-}
-.count-box p {
-  font-size:1.3rem;
-  margin:10px 0 0;
-  font-weight:600;
-}
-
 /* HEARTS */
 .heart {
   position:fixed;
@@ -155,6 +146,14 @@ button {
   from {opacity:1; transform:translateY(0);}
   to {opacity:0; transform:translateY(-90px);}
 }
+
+/* FINAL WHISPER */
+.whisper {
+  text-align:center;
+  opacity:0.7;
+  font-size:0.9rem;
+  margin:80px 0 40px;
+}
 </style>
 </head>
 
@@ -163,33 +162,15 @@ button {
 <header>
   <div>
     <h1>For You</h1>
-    <p>
-      Not for a day.<br>
-      Not for an occasion.<br>
-      Just for you.
-    </p>
-
-    <div class="countdown">
-      <div class="count-box">
-        <h3>Our Journey 💍</h3>
-        <p id="annivCount"></p>
-      </div>
-      <div class="count-box">
-        <h3>This Chapter 🤍</h3>
-        <p id="babyCount"></p>
-      </div>
-    </div>
-
+    <p>Not for a day. Just for you.</p>
     <button onclick="scrollToContent()">Take your time</button>
   </div>
 </header>
 
 <section id="content">
 
-<!-- CHOCOLATE -->
-<section class="day">
+<section class="day" data-unlock="2026-02-09" data-label="Opens on Chocolate Day 🍫">
 <h2>Chocolate Day 🍫</h2>
-<p class="soft-text">I missed the calendar — not the feeling.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="chocolate" class="center">🍫</div>
@@ -199,10 +180,8 @@ button {
 <p id="chocoText" class="soft-text" style="display:none;">Just because 💗</p>
 </section>
 
-<!-- TEDDY -->
-<section class="day">
+<section class="day" data-unlock="2026-02-10" data-label="Opens on Teddy Day 🧸">
 <h2>Teddy Day 🧸</h2>
-<p class="soft-text">For comfort — especially on the quiet days.</p>
 <div class="avatar-row">
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div id="teddy" class="center">🧸</div>
@@ -212,77 +191,40 @@ button {
 <p id="teddyText" class="soft-text" style="display:none;">Always here.</p>
 </section>
 
-<!-- PROMISE -->
-<section class="day">
+<section class="day" data-unlock="2026-02-11" data-label="Promise Day 💌">
 <h2>Promise Day 💌</h2>
-<div class="avatar-row">
-  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-</div>
 <button id="promiseBtn" onclick="nextPromise(event)">Read my promise</button>
 <p id="promiseText" class="soft-text promise"></p>
 </section>
 
-<!-- HUG -->
-<section class="day">
+<section class="day" data-unlock="2026-02-12" data-label="Hug Day 🤍">
 <h2>Hug Day 🤍</h2>
-<p class="soft-text">For the moments that feel heavier than words.</p>
-<div class="avatar-row">
-  <div id="hugHim" class="avatar hug-left-start">
-    <img src="images/avatars/him_blazer.jpg.PNG">
-  </div>
-  <div id="hugHer" class="avatar hug-right-start">
-    <img src="images/avatars/her_maternity.jpg.PNG">
-  </div>
-</div>
 <button onclick="hug(event)">Come here</button>
 </section>
 
-<!-- KISS -->
-<section class="day">
+<section class="day" data-unlock="2026-02-13" data-label="Kiss Day 💋">
 <h2>Kiss Day 💋</h2>
-<div class="avatar-row">
-  <div id="kissHim" class="avatar hug-left-start">
-    <img src="images/avatars/him_blazer.jpg.PNG">
-  </div>
-  <div id="kissHer" class="avatar hug-right-start">
-    <img src="images/avatars/her_maternity.jpg.PNG">
-  </div>
-</div>
 <button onclick="kiss(event)">Lean in</button>
-<div id="kissMark" class="val-heart">💋</div>
 </section>
 
-<!-- VALENTINE -->
-<section class="day">
+<section class="day" data-unlock="2026-02-14" data-label="Valentine’s Day ❤️">
 <h2>Valentine’s Day ❤️</h2>
-<div class="avatar-row">
-  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-</div>
 <p class="soft-text">Still you. Still us.</p>
-<button onclick="valentine(event)">Stay with me</button>
-<div id="valHeart" class="val-heart">💗</div>
 </section>
 
-<!-- ANNIVERSARY -->
-<section class="day">
+<section class="day" data-unlock="2026-03-02" data-label="Our Anniversary 💍">
 <h2>Our Anniversary 💍</h2>
-<p class="soft-text">
-Two years of learning each other.<br>
-And I’d still choose you — again.
-</p>
+<p class="soft-text">I’d still choose you — again.</p>
 </section>
 
-<!-- THIS CHAPTER -->
-<section class="day">
+<section class="day" data-unlock="2026-03-15" data-label="This Chapter 🤍">
 <h2>This Chapter 🤍</h2>
-<p class="soft-text">
-Watching you become a mother<br>
-has made me fall in love with you in a new way.<br><br>
-Your strength. Your patience. Your heart.
-</p>
+<p class="soft-text">You’re doing something incredible.</p>
 </section>
+
+<p class="whisper">
+In case no one told you today — you’re doing great.
+</p>
 
 </section>
 
@@ -303,81 +245,45 @@ function spawnHeart(e) {
 
 function giveChocolate(e){
   e.stopPropagation();
-  const c=document.getElementById("chocolate");
-  c.classList.remove("move-chocolate");
-  void c.offsetWidth;
-  c.classList.add("move-chocolate");
+  document.getElementById("chocolate").classList.add("move-chocolate");
   document.getElementById("chocoText").style.display="block";
 }
 
 function giveTeddy(e){
   e.stopPropagation();
-  const t=document.getElementById("teddy");
-  t.classList.remove("teddy-bounce");
-  void t.offsetWidth;
-  t.classList.add("teddy-bounce");
+  document.getElementById("teddy").classList.add("teddy-bounce");
   document.getElementById("teddyText").style.display="block";
 }
 
 const promises=[
-  "I promise to listen — even when it’s hard.",
-  "I promise to learn — even when I’m wrong.",
-  "I promise to stay — in every version of us."
+  "I promise to listen.",
+  "I promise to learn.",
+  "I promise to stay."
 ];
 let pi=0;
 function nextPromise(e){
   e.stopPropagation();
-  const p=document.getElementById("promiseText");
-  const btn=document.getElementById("promiseBtn");
-
   if(pi<promises.length){
+    const p=document.getElementById("promiseText");
     p.innerText=promises[pi++];
-    p.classList.remove("show");
-    void p.offsetWidth;
     p.classList.add("show");
-
-    if(pi<promises.length){
-      btn.innerText="Read the next one";
-    } else {
-      btn.innerText="That’s all 🤍";
-    }
-  } else {
-    btn.style.display="none";
   }
 }
 
-function hug(e){
-  e.stopPropagation();
-  document.getElementById("hugHim").classList.add("hug-left");
-  document.getElementById("hugHer").classList.add("hug-right");
-}
+function hug(e){ e.stopPropagation(); }
+function kiss(e){ e.stopPropagation(); }
 
-function kiss(e){
-  e.stopPropagation();
-  document.getElementById("kissHim").classList.add("hug-left");
-  document.getElementById("kissHer").classList.add("hug-right");
-  document.getElementById("kissMark").classList.add("show");
-}
+/* DATE LOCKING */
+const today = new Date();
+today.setHours(0,0,0,0);
 
-function valentine(e){
-  e.stopPropagation();
-  document.getElementById("valHeart").classList.add("show");
-}
-
-/* REFLECTIVE COUNTDOWN */
-function updateCountdowns(){
-  const start=new Date(2024,2,2);
-  const now=new Date();
-
-  const daysTogether=Math.max(0, Math.floor((now-start)/(1000*60*60*24)));
-
-  document.getElementById("annivCount").innerText =
-    daysTogether + " days together";
-
-  document.getElementById("babyCount").innerText =
-    "So far, so strong";
-}
-updateCountdowns();
+document.querySelectorAll(".day").forEach(sec=>{
+  const d = new Date(sec.dataset.unlock);
+  d.setHours(0,0,0,0);
+  if(today < d){
+    sec.classList.add("locked");
+  }
+});
 </script>
 
 </body>
