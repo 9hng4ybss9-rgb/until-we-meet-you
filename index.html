@@ -60,54 +60,47 @@
       border-radius: 16px;
       padding: 22px;
       margin-bottom: 30px;
-      position: relative;
-      transition: 0.3s ease;
-    }
-
-    .day img {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 15px;
-    }
-
-    .locked-overlay {
-      text-align: center;
-      color: #777;
-    }
-
-    .locked-overlay h2 {
-      margin-bottom: 8px;
-    }
-
-    .locked-overlay .date {
-      font-size: 0.9rem;
-      opacity: 0.8;
     }
 
     .soft-text {
       font-size: 0.9rem;
       opacity: 0.8;
-      margin-top: 10px;
     }
 
-    .day-content {
-      display: none;
-    }
-
-    .day.unlocked .day-content {
-      display: block;
-    }
-
-    .day.unlocked .locked-overlay {
-      display: none;
-    }
-
+    /* ALWAYS PRESENT */
     .always {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border: 1px dashed #e3cfcf;
     }
 
-    /* Hearts */
+    /* AVATARS */
+    .avatar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 40%;
+    }
+
+    .avatar img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    #chocolate {
+      font-size: 28px;
+      transition: transform 1s ease;
+    }
+
+    .move-chocolate {
+      transform: translateX(120px);
+    }
+
+    /* HEARTS */
     .heart {
       position: fixed;
       font-size: 18px;
@@ -138,103 +131,77 @@
 <section id="content">
 
   <!-- ALWAYS PRESENT -->
-  <section class="day always unlocked">
+  <section class="day always">
     <h2>For You, Anytime 🌿</h2>
     <p>
-      This space stays with you —<br>
-      on busy days, slow days, and everything in between.
+      This space stays with you — on busy days, slow days,
+      and everything in between.
     </p>
     <p class="soft-text">
       Little moments will live here as the days pass.
     </p>
   </section>
 
-  <!-- US -->
-  <section class="day unlocked" data-date="2026-02-09">
-    <div class="day-content">
-      <h2>Us</h2>
-      <p>Before everything changed. Still us.</p>
-      <img src="images/couple_old.jpg.jpg">
-      <img src="images/couple_maternity1.jpg.JPEG">
-    </div>
-  </section>
-
   <!-- CHOCOLATE DAY -->
-  <section class="day unlocked" data-date="2026-02-09">
+  <section class="day" data-date="2026-02-09">
     <div class="day-content">
+
       <h2>Chocolate Day 🍫</h2>
       <p>Better late than never.</p>
-      <button onclick="document.getElementById('choco').style.display='block'">
-        A small comfort
-      </button>
-      <p id="choco" class="soft-text" style="display:none;">
-        I hope today feels a little softer.
+
+      <div class="avatar-row">
+        <!-- YOU -->
+        <div class="avatar">
+          <img src="images/avatars/him_blazer.jpg.PNG" alt="You">
+        </div>
+
+        <!-- CHOCOLATE -->
+        <div id="chocolate">🍫</div>
+
+        <!-- HER -->
+        <div class="avatar">
+          <img src="images/avatars/her_maternity.jpg.PNG" alt="Her">
+        </div>
+      </div>
+
+      <button onclick="giveChocolate()">Give her chocolate</button>
+
+      <p id="choco-text" class="soft-text" style="display:none;">
+        A little sweetness, just because 💗
       </p>
+
     </div>
   </section>
 
-  <!-- TEDDY DAY -->
-  <section class="day" data-date="2026-02-10">
-    <div class="locked-overlay">
-      <h2>Teddy Day 🧸</h2>
-      <div class="date">Opens on Feb 10</div>
-      <div class="soft-text">Something comforting is waiting here.</div>
-    </div>
-    <div class="day-content">
-      <!-- future interaction -->
-    </div>
+  <!-- PLACEHOLDERS FOR OTHER DAYS -->
+  <section class="day">
+    <h2>Teddy Day 🧸</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
-  <!-- PROMISE DAY -->
-  <section class="day" data-date="2026-02-11">
-    <div class="locked-overlay">
-      <h2>Promise Day 💌</h2>
-      <div class="date">Opens on Feb 11</div>
-      <div class="soft-text">This one is about staying.</div>
-    </div>
-    <div class="day-content"></div>
+  <section class="day">
+    <h2>Promise Day 💌</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
-  <!-- HUG DAY -->
-  <section class="day" data-date="2026-02-12">
-    <div class="locked-overlay">
-      <h2>Hug Day 🤍</h2>
-      <div class="date">Opens on Feb 12</div>
-      <div class="soft-text">A pause. A breath.</div>
-    </div>
-    <div class="day-content"></div>
+  <section class="day">
+    <h2>Hug Day 🤍</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
-  <!-- VALENTINE -->
-  <section class="day" data-date="2026-02-14">
-    <div class="locked-overlay">
-      <h2>Valentine’s Day ❤️</h2>
-      <div class="date">Opens on Feb 14</div>
-      <div class="soft-text">Quiet. Deep. Ours.</div>
-    </div>
-    <div class="day-content">
-      <img src="images/couple_maternity2.jpg.JPEG">
-    </div>
+  <section class="day">
+    <h2>Valentine’s Day ❤️</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
-  <!-- ANNIVERSARY -->
-  <section class="day" data-date="2026-03-02">
-    <div class="locked-overlay">
-      <h2>Our Anniversary 💍</h2>
-      <div class="date">Opens on Mar 2</div>
-      <div class="soft-text">Another year of choosing.</div>
-    </div>
-    <div class="day-content"></div>
+  <section class="day">
+    <h2>Our Anniversary 💍</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
-  <!-- DUE DATE -->
-  <section class="day" data-date="2026-03-15">
-    <div class="locked-overlay">
-      <h2>Until We Meet You 👶</h2>
-      <div class="date">When the time comes</div>
-      <div class="soft-text">No rush. Just love.</div>
-    </div>
-    <div class="day-content"></div>
+  <section class="day">
+    <h2>Until We Meet You 👶</h2>
+    <p class="soft-text">Coming soon…</p>
   </section>
 
 </section>
