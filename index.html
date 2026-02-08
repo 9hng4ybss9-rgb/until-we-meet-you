@@ -14,19 +14,19 @@ body {
   animation: gradient 18s ease infinite;
   color: #333;
 }
-
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 header {
   height: 100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 button {
@@ -52,52 +52,74 @@ button {
 }
 
 .soft-text {
-  font-size: 0.95rem;
   opacity: 0.85;
+  font-size: 0.95rem;
+  margin-top: 12px;
 }
 
 .avatar-row {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 20px 0;
 }
 
 .avatar {
   width: 38%;
-  transition: transform 0.7s ease;
+  transition: transform 0.4s ease;
 }
 
 .avatar img {
-  width:100%;
-  border-radius:16px;
+  width: 100%;
+  border-radius: 16px;
 }
 
 .center {
-  font-size:42px;
-  transition: transform 0.7s ease, opacity 0.7s ease;
+  font-size: 42px;
+  transition: transform 0.4s ease;
 }
 
-/* INTERACTIONS */
+/* MOVEMENTS */
 .move-chocolate { transform: translateX(140px); }
-.teddy-bounce { transform: translateY(-35px) scale(1.5); }
+.teddy-bounce { transform: translateY(-40px) scale(1.6); }
 
-.hug-left { transform: translateX(60px); }
-.hug-right { transform: translateX(-60px); }
+.promise {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.promise.show {
+  opacity: 1;
+  transform: scale(1.05);
+}
 
-.glow { filter: drop-shadow(0 0 14px pink); }
+.hug-left-start { transform: translateX(-70px); }
+.hug-right-start { transform: translateX(70px); }
+.hug-left { transform: translateX(0); }
+.hug-right { transform: translateX(0); }
+
+.val-heart {
+  font-size: 34px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+.val-heart.show {
+  opacity: 1;
+  transform: scale(1.2);
+}
 
 /* HEARTS */
 .heart {
   position: fixed;
   font-size: 18px;
   animation: floatUp 3s ease forwards;
-  pointer-events:none;
+  pointer-events: none;
 }
-
 @keyframes floatUp {
-  from { opacity:1; transform:translateY(0); }
-  to { opacity:0; transform:translateY(-90px); }
+  from {opacity:1; transform:translateY(0);}
+  to {opacity:0; transform:translateY(-90px);}
 }
 </style>
 </head>
@@ -135,7 +157,7 @@ button {
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
 <button onclick="giveTeddy(event)">Tap gently</button>
-<p id="teddyText" class="soft-text" style="display:none;">For comfort, always.</p>
+<p id="teddyText" class="soft-text" style="display:none;">For comfort.</p>
 </section>
 
 <!-- PROMISE -->
@@ -145,18 +167,18 @@ button {
   <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
   <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="nextPromise(event)">Tap to read</button>
-<p id="promiseText" class="soft-text"></p>
+<button onclick="nextPromise(event)">Tap gently</button>
+<p id="promiseText" class="soft-text promise"></p>
 </section>
 
 <!-- HUG -->
 <section class="day">
 <h2>Hug Day 🤍</h2>
 <div class="avatar-row">
-  <div id="hugHim" class="avatar" style="transform:translateX(-80px)">
+  <div id="hugHim" class="avatar hug-left-start">
     <img src="images/avatars/him_blazer.jpg.PNG">
   </div>
-  <div id="hugHer" class="avatar" style="transform:translateX(80px)">
+  <div id="hugHer" class="avatar hug-right-start">
     <img src="images/avatars/her_maternity.jpg.PNG">
   </div>
 </div>
@@ -166,30 +188,15 @@ button {
 <!-- VALENTINE -->
 <section class="day">
 <h2>Valentine’s Day ❤️</h2>
-<p class="soft-text">Quiet. Deep. Ours.</p>
-</section>
-
-<!-- ANNIVERSARY -->
-<section class="day">
-<h2>Our Anniversary 💍</h2>
 <div class="avatar-row">
-  <div id="annivHim" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="annivHer" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
 </div>
-<button onclick="anniversary(event)">Tap & smile</button>
-<p id="annivText" class="soft-text" style="display:none;">I choose you. Every time.</p>
-</section>
-
-<!-- DUE DATE -->
-<section class="day">
-<h2>Until We Meet You 👶</h2>
-<div id="babyHeart" class="center glow">💗</div>
-<p class="soft-text">No rush. Just love.</p>
+<button onclick="valentine(event)">Tap</button>
+<div id="valHeart" class="val-heart">💗</div>
 </section>
 
 </section>
-
-<script src="script.js"></script>
 
 <script>
 function scrollToContent() {
@@ -197,13 +204,60 @@ function scrollToContent() {
 }
 
 function spawnHeart(e) {
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="💗";
-  h.style.left=e.clientX+"px";
-  h.style.top=e.clientY+"px";
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💗";
+  h.style.left = e.clientX + "px";
+  h.style.top = e.clientY + "px";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),3000);
+  setTimeout(() => h.remove(), 3000);
+}
+
+function giveChocolate(e) {
+  e.stopPropagation();
+  const c = document.getElementById("chocolate");
+  c.classList.remove("move-chocolate");
+  void c.offsetWidth;
+  c.classList.add("move-chocolate");
+  document.getElementById("chocoText").style.display = "block";
+}
+
+function giveTeddy(e) {
+  e.stopPropagation();
+  const t = document.getElementById("teddy");
+  t.classList.remove("teddy-bounce");
+  void t.offsetWidth;
+  t.classList.add("teddy-bounce");
+  document.getElementById("teddyText").style.display = "block";
+}
+
+const promises = [
+  "I promise to listen.",
+  "I promise to learn.",
+  "I promise to stay."
+];
+let promiseIndex = 0;
+
+function nextPromise(e) {
+  e.stopPropagation();
+  if (promiseIndex < promises.length) {
+    const p = document.getElementById("promiseText");
+    p.innerText = promises[promiseIndex++];
+    p.classList.remove("show");
+    void p.offsetWidth;
+    p.classList.add("show");
+  }
+}
+
+function hug(e) {
+  e.stopPropagation();
+  document.getElementById("hugHim").classList.add("hug-left");
+  document.getElementById("hugHer").classList.add("hug-right");
+}
+
+function valentine(e) {
+  e.stopPropagation();
+  document.getElementById("valHeart").classList.add("show");
 }
 </script>
 
