@@ -1,0 +1,57 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  background: #faf7f4;
+  color: #333;
+  text-align: center;
+}
+
+section {
+  padding: 40px 20px;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  background: #d48b9c;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
+.soft {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.note {
+  font-style: italic;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+.day {
+  margin: 30px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: white;
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
