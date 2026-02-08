@@ -67,7 +67,6 @@
       opacity: 0.8;
     }
 
-    /* ALWAYS PRESENT */
     .always {
       background: rgba(255,255,255,0.95);
       border: 1px dashed #e3cfcf;
@@ -91,6 +90,7 @@
       border-radius: 16px;
     }
 
+    /* CHOCOLATE */
     #chocolate {
       font-size: 32px;
       transition: transform 0.9s ease;
@@ -98,6 +98,16 @@
 
     .move-chocolate {
       transform: translateX(120px);
+    }
+
+    /* TEDDY */
+    #teddy {
+      font-size: 36px;
+      transition: transform 0.4s ease;
+    }
+
+    .teddy-pop {
+      transform: scale(1.3);
     }
 
     /* HEARTS */
@@ -144,22 +154,18 @@
 
   <!-- CHOCOLATE DAY -->
   <section class="day">
-
     <h2>Chocolate Day 🍫</h2>
     <p>Better late than never.</p>
 
     <div class="avatar-row">
-      <!-- YOU -->
       <div class="avatar">
-        <img src="images/avatars/him_blazer.jpg.PNG" alt="You">
+        <img src="images/avatars/him_blazer.jpg.PNG">
       </div>
 
-      <!-- CHOCOLATE -->
       <div id="chocolate">🍫</div>
 
-      <!-- HER -->
       <div class="avatar">
-        <img src="images/avatars/her_maternity.jpg.PNG" alt="Her">
+        <img src="images/avatars/her_maternity.jpg.PNG">
       </div>
     </div>
 
@@ -168,11 +174,33 @@
     <p id="choco-text" class="soft-text" style="display:none;">
       A little sweetness, just because 💗
     </p>
+  </section>
 
+  <!-- TEDDY DAY -->
+  <section class="day">
+    <h2>Teddy Day 🧸</h2>
+    <p>Something soft for you.</p>
+
+    <div class="avatar-row">
+      <div class="avatar">
+        <img src="images/avatars/him_blazer.jpg.PNG">
+      </div>
+
+      <div id="teddy">🧸</div>
+
+      <div class="avatar">
+        <img src="images/avatars/her_maternity.jpg.PNG">
+      </div>
+    </div>
+
+    <button onclick="giveTeddy(event)">Give her a teddy</button>
+
+    <p id="teddy-text" class="soft-text" style="display:none;">
+      For comfort, always.
+    </p>
   </section>
 
   <!-- PLACEHOLDERS -->
-  <section class="day"><h2>Teddy Day 🧸</h2><p class="soft-text">Coming soon…</p></section>
   <section class="day"><h2>Promise Day 💌</h2><p class="soft-text">Coming soon…</p></section>
   <section class="day"><h2>Hug Day 🤍</h2><p class="soft-text">Coming soon…</p></section>
   <section class="day"><h2>Valentine’s Day ❤️</h2><p class="soft-text">Coming soon…</p></section>
