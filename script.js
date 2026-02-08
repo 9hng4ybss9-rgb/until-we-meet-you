@@ -1,5 +1,5 @@
-// 🔧 TOGGLE THIS FOR TESTING
-const TEST_MODE = true; // true = unlock all days, false = date-based
+// 🔧 TEST MODE: unlock everything for now
+const TEST_MODE = true;
 
 function scrollToContent() {
   document.getElementById("content").scrollIntoView({
@@ -7,25 +7,10 @@ function scrollToContent() {
   });
 }
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+function giveChocolate() {
+  const choco = document.getElementById("chocolate");
+  const text = document.getElementById("choco-text");
 
-document.querySelectorAll(".day").forEach(section => {
-  const unlockDate = section.dataset.date
-    ? new Date(section.dataset.date)
-    : null;
-
-  if (TEST_MODE) {
-    // 🔓 UNLOCK EVERYTHING
-    section.classList.add("unlocked");
-    return;
-  }
-
-  if (!unlockDate) return;
-
-  unlockDate.setHours(0, 0, 0, 0);
-
-  if (today >= unlockDate) {
-    section.classList.add("unlocked");
-  }
-});
+  choco.classList.add("move-chocolate");
+  text.style.display = "block";
+}
