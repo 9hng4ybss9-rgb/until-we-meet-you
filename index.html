@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Until We Meet You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+  <h1>Until We Meet You</h1>
+  <p>For you. For me. For the little one we’re waiting to meet.</p>
+  <button onclick="scrollToContent()">Begin</button>
+</section>
+
+<section id="content">
+
+  <h2>Us</h2>
+  <p class="soft">
+    Before anything else,<br>
+    we were partners.<br><br>
+    And we still are.
+  </p>
+  <img src="images/couple1.jpg">
+  <img src="images/couple2.jpg">
+
+  <h2>For You</h2>
+  <p class="soft">
+    You are doing something extraordinary.<br><br>
+    You don’t have to be strong every day.<br><br>
+    I see you.
+  </p>
+  <img src="images/her1.jpg">
+
+  <h2>Valentine’s Week</h2>
+  <p class="note">
+    I may have missed Rose Day and Propose Day…<br>
+    but loving you has never been on a schedule.<br><br>
+    So here I am. Better late than never 🌸
+  </p>
+
+  <!-- Chocolate Day -->
+  <div class="day" data-date="2026-02-09">
+    <h3>🍫 Chocolate Day</h3>
+    <p>
+      I missed a couple of days…<br><br>
+      but when things feel heavy,<br>
+      comfort matters more than timing 🍫
+    </p>
+  </div>
+
+  <!-- Teddy Day -->
+  <div class="day" data-date="2026-02-10">
+    <h3>🧸 Teddy Day</h3>
+    <button onclick="this.nextElementSibling.style.display='block'">A hug for you</button>
+    <p class="hidden">
+      This is me showing up —<br>
+      even when I’m late.
+    </p>
+  </div>
+
+  <!-- Promise Day -->
+  <div class="day" data-date="2026-02-11">
+    <h3>💌 Promise Day</h3>
+    <ul>
+      <li>I’ll learn with you</li>
+      <li>I’ll pause before reacting</li>
+      <li>I’ll stay</li>
+    </ul>
+  </div>
+
+  <!-- Hug Day -->
+  <div class="day" data-date="2026-02-12">
+    <h3>🤗 Hug Day</h3>
+    <p>
+      Some days don’t need fixing.<br><br>
+      They just need closeness.
+    </p>
+  </div>
+
+  <!-- Valentine’s Day -->
+  <div class="day" data-date="2026-02-14">
+    <h3>❤️ Valentine’s Day</h3>
+    <p>
+      This isn’t about a day.<br><br>
+      It’s about being here —<br>
+      and choosing you anyway.
+    </p>
+  </div>
+
+  <!-- Anniversary -->
+  <div class="day" data-date="2026-03-02">
+    <h3>💍 Our Anniversary</h3>
+    <p>
+      I would still choose you —<br>
+      knowing what we’ve grown through.
+    </p>
+  </div>
+
+  <!-- Due Date -->
+  <div class="day" data-date="2026-03-15">
+    <h3>👶 When the Time Comes</h3>
+    <p>
+      There’s no deadline on love.<br><br>
+      We’ll meet you when we meet you.
+    </p>
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
