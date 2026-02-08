@@ -1,15 +1,13 @@
-// 🔧 TEST MODE: unlock everything for now
-const TEST_MODE = true;
+function giveChocolate(event) {
+  // Prevent heart animation for this specific click
+  event.stopPropagation();
 
-function scrollToContent() {
-  document.getElementById("content").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-function giveChocolate() {
   const choco = document.getElementById("chocolate");
   const text = document.getElementById("choco-text");
+
+  // Reset animation for repeated clicks
+  choco.classList.remove("move-chocolate");
+  void choco.offsetWidth;
 
   choco.classList.add("move-chocolate");
   text.style.display = "block";
