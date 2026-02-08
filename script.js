@@ -1,3 +1,6 @@
+// 🔧 TOGGLE THIS FOR TESTING
+const TEST_MODE = true; // true = unlock all days, false = date-based
+
 function scrollToContent() {
   document.getElementById("content").scrollIntoView({
     behavior: "smooth"
@@ -11,6 +14,12 @@ document.querySelectorAll(".day").forEach(section => {
   const unlockDate = section.dataset.date
     ? new Date(section.dataset.date)
     : null;
+
+  if (TEST_MODE) {
+    // 🔓 UNLOCK EVERYTHING
+    section.classList.add("unlocked");
+    return;
+  }
 
   if (!unlockDate) return;
 
