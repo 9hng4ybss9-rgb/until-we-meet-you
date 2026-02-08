@@ -1,25 +1,42 @@
-function giveChocolate(event) {
-  event.stopPropagation();
-
-  const choco = document.getElementById("chocolate");
-  const text = document.getElementById("choco-text");
-
-  choco.classList.remove("move-chocolate");
-  void choco.offsetWidth;
-  choco.classList.add("move-chocolate");
-
-  text.style.display = "block";
+function giveChocolate(e) {
+  e.stopPropagation();
+  const c = document.getElementById("chocolate");
+  c.classList.remove("move-chocolate");
+  void c.offsetWidth;
+  c.classList.add("move-chocolate");
+  document.getElementById("choco-text").style.display = "block";
 }
 
-function giveTeddy(event) {
-  event.stopPropagation();
+function giveTeddy(e) {
+  e.stopPropagation();
+  const t = document.getElementById("teddy");
+  t.classList.remove("teddy-bounce");
+  void t.offsetWidth;
+  t.classList.add("teddy-bounce");
+  document.getElementById("teddy-text").style.display = "block";
+}
 
-  const teddy = document.getElementById("teddy");
-  const text = document.getElementById("teddy-text");
+const promises = [
+  "I’ll listen.",
+  "I’ll learn.",
+  "I’ll stay."
+];
+let promiseIndex = 0;
 
-  teddy.classList.remove("teddy-pop");
-  void teddy.offsetWidth;
-  teddy.classList.add("teddy-pop");
+function nextPromise(e) {
+  e.stopPropagation();
+  if (promiseIndex < promises.length) {
+    document.getElementById("promise").innerText += promises[promiseIndex++] + " ";
+  }
+}
 
-  text.style.display = "block";
+function hug(e) {
+  e.stopPropagation();
+  document.getElementById("hug-him").classList.add("hug-close");
+  document.getElementById("hug-her").classList.add("hug-close");
+}
+
+function anniversary(e) {
+  e.stopPropagation();
+  document.getElementById("anniv-text").style.display = "block";
 }
