@@ -1,14 +1,25 @@
 function giveChocolate(event) {
-  // Prevent heart animation for this specific click
   event.stopPropagation();
 
   const choco = document.getElementById("chocolate");
   const text = document.getElementById("choco-text");
 
-  // Reset animation for repeated clicks
   choco.classList.remove("move-chocolate");
   void choco.offsetWidth;
-
   choco.classList.add("move-chocolate");
+
+  text.style.display = "block";
+}
+
+function giveTeddy(event) {
+  event.stopPropagation();
+
+  const teddy = document.getElementById("teddy");
+  const text = document.getElementById("teddy-text");
+
+  teddy.classList.remove("teddy-pop");
+  void teddy.offsetWidth;
+  teddy.classList.add("teddy-pop");
+
   text.style.display = "block";
 }
