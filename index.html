@@ -31,6 +31,11 @@ header {
 
 header h1 {
   font-size: 2.3rem;
+  margin-bottom: 6px;
+}
+
+header p {
+  opacity: 0.85;
 }
 
 button {
@@ -41,6 +46,11 @@ button {
   color:white;
   font-size:1rem;
   margin-top: 12px;
+}
+
+.music-btn {
+  background:#b07a7a;
+  margin-top: 16px;
 }
 
 #content {
@@ -58,7 +68,7 @@ button {
   position: relative;
 }
 
-/* LOCKED STATE */
+/* LOCKED */
 .day.locked {
   filter: blur(4px);
   pointer-events: none;
@@ -70,69 +80,31 @@ button {
   display:flex;
   align-items:center;
   justify-content:center;
-  background: rgba(255,255,255,0.75);
-  font-size:1.1rem;
-  color:#555;
+  background: rgba(255,255,255,0.8);
+  font-size:1.05rem;
   border-radius:22px;
-  filter:none;
 }
 
-.soft-text {
-  opacity:0.85;
-  font-size:0.95rem;
-  line-height:1.55;
-}
-
-.avatar-row {
+/* COUNTDOWN */
+.countdown {
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:24px 0;
+  justify-content:space-around;
+  margin:22px 0;
 }
-
-.avatar {
-  width:38%;
-  transition:transform 0.4s ease;
-}
-
-.avatar img {
-  width:100%;
+.count-box {
+  background:#fff5f6;
   border-radius:18px;
+  padding:16px;
+  width:45%;
 }
-
-.center {
-  font-size:42px;
+.count-box h3 {
+  margin:0;
+  font-size:0.95rem;
 }
-
-/* MOVEMENTS */
-.move-chocolate { transform: translateX(140px); }
-.teddy-bounce { transform: translateY(-35px) scale(1.5); }
-
-.promise {
-  opacity:0;
-  transform:scale(0.9);
-  transition:opacity 0.3s ease, transform 0.3s ease;
-}
-.promise.show {
-  opacity:1;
-  transform:scale(1.05);
-}
-
-.hug-left-start { transform: translateX(-60px); }
-.hug-right-start { transform: translateX(60px); }
-.hug-left { transform: translateX(0); }
-.hug-right { transform: translateX(0); }
-
-.val-heart {
-  font-size:34px;
-  opacity:0;
-  transform:scale(0.6);
-  transition:opacity 0.3s ease, transform 0.3s ease;
-  text-align:center;
-}
-.val-heart.show {
-  opacity:1;
-  transform:scale(1.2);
+.count-box p {
+  font-size:1.2rem;
+  margin:8px 0 0;
+  font-weight:600;
 }
 
 /* HEARTS */
@@ -146,14 +118,6 @@ button {
   from {opacity:1; transform:translateY(0);}
   to {opacity:0; transform:translateY(-90px);}
 }
-
-/* FINAL WHISPER */
-.whisper {
-  text-align:center;
-  opacity:0.7;
-  font-size:0.9rem;
-  margin:80px 0 40px;
-}
 </style>
 </head>
 
@@ -163,6 +127,19 @@ button {
   <div>
     <h1>For You</h1>
     <p>Not for a day. Just for you.</p>
+
+    <div class="countdown">
+      <div class="count-box">
+        <h3>Our Anniversary 💍</h3>
+        <p id="annivCount"></p>
+      </div>
+      <div class="count-box">
+        <h3>We Meet This Chapter 👶</h3>
+        <p id="babyCount"></p>
+      </div>
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">Play music 🎵</button>
     <button onclick="scrollToContent()">Take your time</button>
   </div>
 </header>
@@ -171,62 +148,54 @@ button {
 
 <section class="day" data-unlock="2026-02-09" data-label="Opens on Chocolate Day 🍫">
 <h2>Chocolate Day 🍫</h2>
-<div class="avatar-row">
-  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="chocolate" class="center">🍫</div>
-  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-</div>
 <button onclick="giveChocolate(event)">Take this</button>
-<p id="chocoText" class="soft-text" style="display:none;">Just because 💗</p>
 </section>
 
 <section class="day" data-unlock="2026-02-10" data-label="Opens on Teddy Day 🧸">
 <h2>Teddy Day 🧸</h2>
-<div class="avatar-row">
-  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-  <div id="teddy" class="center">🧸</div>
-  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-</div>
 <button onclick="giveTeddy(event)">Hold this close</button>
-<p id="teddyText" class="soft-text" style="display:none;">Always here.</p>
 </section>
 
 <section class="day" data-unlock="2026-02-11" data-label="Promise Day 💌">
 <h2>Promise Day 💌</h2>
-<button id="promiseBtn" onclick="nextPromise(event)">Read my promise</button>
-<p id="promiseText" class="soft-text promise"></p>
+<button onclick="nextPromise(event)">Read my promise</button>
+<p id="promiseText"></p>
 </section>
 
 <section class="day" data-unlock="2026-02-12" data-label="Hug Day 🤍">
 <h2>Hug Day 🤍</h2>
-<button onclick="hug(event)">Come here</button>
+<button>Come here</button>
 </section>
 
 <section class="day" data-unlock="2026-02-13" data-label="Kiss Day 💋">
 <h2>Kiss Day 💋</h2>
-<button onclick="kiss(event)">Lean in</button>
+<button>Lean in</button>
 </section>
 
 <section class="day" data-unlock="2026-02-14" data-label="Valentine’s Day ❤️">
 <h2>Valentine’s Day ❤️</h2>
-<p class="soft-text">Still you. Still us.</p>
+<p>Still you. Still us.</p>
 </section>
 
 <section class="day" data-unlock="2026-03-02" data-label="Our Anniversary 💍">
 <h2>Our Anniversary 💍</h2>
-<p class="soft-text">I’d still choose you — again.</p>
+<p>I’d still choose you — again.</p>
 </section>
 
 <section class="day" data-unlock="2026-03-15" data-label="This Chapter 🤍">
 <h2>This Chapter 🤍</h2>
-<p class="soft-text">You’re doing something incredible.</p>
+<p>You’re doing something incredible.</p>
 </section>
 
-<p class="whisper">
+<p style="text-align:center;opacity:0.7;margin:60px 0;">
 In case no one told you today — you’re doing great.
 </p>
 
 </section>
+
+<audio id="bgMusic" loop>
+  <source src="music/soft.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 function scrollToContent() {
@@ -243,46 +212,41 @@ function spawnHeart(e) {
   setTimeout(()=>h.remove(),3000);
 }
 
-function giveChocolate(e){
-  e.stopPropagation();
-  document.getElementById("chocolate").classList.add("move-chocolate");
-  document.getElementById("chocoText").style.display="block";
-}
-
-function giveTeddy(e){
-  e.stopPropagation();
-  document.getElementById("teddy").classList.add("teddy-bounce");
-  document.getElementById("teddyText").style.display="block";
-}
-
-const promises=[
-  "I promise to listen.",
-  "I promise to learn.",
-  "I promise to stay."
-];
-let pi=0;
-function nextPromise(e){
-  e.stopPropagation();
-  if(pi<promises.length){
-    const p=document.getElementById("promiseText");
-    p.innerText=promises[pi++];
-    p.classList.add("show");
+/* MUSIC */
+const music=document.getElementById("bgMusic");
+let playing=false;
+function toggleMusic(){
+  if(!playing){
+    music.play();
+    event.target.innerText="Pause music 🔇";
+  } else {
+    music.pause();
+    event.target.innerText="Play music 🎵";
   }
+  playing=!playing;
 }
 
-function hug(e){ e.stopPropagation(); }
-function kiss(e){ e.stopPropagation(); }
+/* COUNTDOWN */
+function updateCountdowns(){
+  const now=new Date();
+  const anniv=new Date(2026,2,2);
+  const baby=new Date(2026,2,15);
 
-/* DATE LOCKING */
-const today = new Date();
+  const d1=Math.ceil((anniv-now)/(1000*60*60*24));
+  const d2=Math.ceil((baby-now)/(1000*60*60*24));
+
+  document.getElementById("annivCount").innerText=d1+" days to go";
+  document.getElementById("babyCount").innerText=d2+" days to go";
+}
+updateCountdowns();
+
+/* LOCKING */
+const today=new Date();
 today.setHours(0,0,0,0);
-
 document.querySelectorAll(".day").forEach(sec=>{
-  const d = new Date(sec.dataset.unlock);
+  const d=new Date(sec.dataset.unlock);
   d.setHours(0,0,0,0);
-  if(today < d){
-    sec.classList.add("locked");
-  }
+  if(today<d) sec.classList.add("locked");
 });
 </script>
 
