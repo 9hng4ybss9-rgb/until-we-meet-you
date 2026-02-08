@@ -1,104 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Until We Meet You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Until We Meet You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(-45deg, #faf7f5, #f3e6e8, #f7efe9);
-      background-size: 400% 400%;
-      animation: gradient 18s ease infinite;
-      color: #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(-45deg, #faf7f5, #f3e6e8, #f7efe9);
+  background-size: 400% 400%;
+  animation: gradient 18s ease infinite;
+  color: #333;
+}
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    header {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    button {
-      padding: 12px 24px;
-      border-radius: 24px;
-      border: none;
-      background: #d48a8a;
-      color: white;
-      font-size: 1rem;
-    }
+button {
+  padding: 12px 24px;
+  border-radius: 24px;
+  border: none;
+  background: #d48a8a;
+  color: white;
+  font-size: 1rem;
+}
 
-    #content {
-      max-width: 850px;
-      margin: auto;
-      padding: 20px;
-    }
+#content {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}
 
-    .day {
-      background: white;
-      border-radius: 16px;
-      padding: 22px;
-      margin-bottom: 30px;
-    }
+.day {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 30px;
+}
 
-    .soft-text {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      margin-top: 10px;
-    }
+.soft-text {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
 
-    .avatar-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 20px 0;
-      gap: 10px;
-    }
+.avatar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
 
-    .avatar {
-      width: 40%;
-    }
+.avatar {
+  width: 38%;
+  transition: transform 0.6s ease;
+}
 
-    .avatar img {
-      width: 100%;
-      border-radius: 16px;
-    }
+.avatar img {
+  width: 100%;
+  border-radius: 16px;
+}
 
-    /* INTERACTION ELEMENTS */
-    #chocolate, #teddy, #heart-baby {
-      font-size: 36px;
-      transition: transform 0.8s ease;
-    }
+/* INTERACTION ELEMENTS */
+.center-item {
+  font-size: 40px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
 
-    .move-chocolate { transform: translateX(120px); }
-    .teddy-bounce { transform: translateY(-20px) scale(1.3); }
-    .hug-close { transform: translateX(30px); }
-    .glow { filter: drop-shadow(0 0 10px pink); }
+.move-chocolate { transform: translateX(120px); }
+.teddy-bounce { transform: translateY(-30px) scale(1.4); }
 
-    /* HEARTS */
-    .heart {
-      position: fixed;
-      font-size: 18px;
-      animation: floatUp 3s ease forwards;
-      pointer-events: none;
-    }
+.hug-left { transform: translateX(25px); }
+.hug-right { transform: translateX(-25px); }
 
-    @keyframes floatUp {
-      from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(-80px); }
-    }
-  </style>
+.promise-show { opacity: 1; }
+
+.glow {
+  filter: drop-shadow(0 0 12px pink);
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  font-size: 18px;
+  animation: floatUp 3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-80px); }
+}
+</style>
 </head>
 
 <body onclick="spawnHeart(event)">
@@ -113,87 +118,85 @@
 
 <section id="content">
 
-  <!-- CHOCOLATE DAY -->
-  <section class="day">
-    <h2>Chocolate Day 🍫</h2>
-    <div class="avatar-row">
-      <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-      <div id="chocolate">🍫</div>
-      <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-    </div>
-    <button onclick="giveChocolate(event)">Tap for a little sweetness</button>
-    <p id="choco-text" class="soft-text" style="display:none;">Just because 💗</p>
-  </section>
+<!-- CHOCOLATE -->
+<section class="day">
+<h2>Chocolate Day 🍫</h2>
+<div class="avatar-row">
+  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div id="chocolate" class="center-item">🍫</div>
+  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+</div>
+<button onclick="giveChocolate(event)">Tap for sweetness</button>
+<p id="chocoText" class="soft-text" style="display:none;">Just because 💗</p>
+</section>
 
-  <!-- TEDDY DAY -->
-  <section class="day">
-    <h2>Teddy Day 🧸</h2>
-    <div class="avatar-row">
-      <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-      <div id="teddy">🧸</div>
-      <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-    </div>
-    <button onclick="giveTeddy(event)">Tap for comfort</button>
-    <p id="teddy-text" class="soft-text" style="display:none;">Always here.</p>
-  </section>
+<!-- TEDDY -->
+<section class="day">
+<h2>Teddy Day 🧸</h2>
+<div class="avatar-row">
+  <div class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div id="teddy" class="center-item">🧸</div>
+  <div class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+</div>
+<button onclick="giveTeddy(event)">Tap gently</button>
+<p id="teddyText" class="soft-text" style="display:none;">For comfort.</p>
+</section>
 
-  <!-- PROMISE DAY -->
-  <section class="day">
-    <h2>Promise Day 💌</h2>
-    <button onclick="nextPromise(event)">Tap gently</button>
-    <p id="promise" class="soft-text"></p>
-  </section>
+<!-- PROMISE -->
+<section class="day">
+<h2>Promise Day 💌</h2>
+<button onclick="nextPromise(event)">Tap to read</button>
+<p id="promiseText" class="soft-text"></p>
+</section>
 
-  <!-- HUG DAY -->
-  <section class="day">
-    <h2>Hug Day 🤍</h2>
-    <div class="avatar-row">
-      <div id="hug-him" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
-      <div id="hug-her" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
-    </div>
-    <button onclick="hug(event)">Tap when you need it</button>
-  </section>
+<!-- HUG -->
+<section class="day">
+<h2>Hug Day 🤍</h2>
+<div class="avatar-row">
+  <div id="hugHim" class="avatar"><img src="images/avatars/him_blazer.jpg.PNG"></div>
+  <div id="hugHer" class="avatar"><img src="images/avatars/her_maternity.jpg.PNG"></div>
+</div>
+<button onclick="hug(event)">Tap when you need it</button>
+</section>
 
-  <!-- VALENTINE -->
-  <section class="day">
-    <h2>Valentine’s Day ❤️</h2>
-    <p class="soft-text">Quiet. Deep. Ours.</p>
-  </section>
+<!-- VALENTINE -->
+<section class="day">
+<h2>Valentine’s Day ❤️</h2>
+<p class="soft-text">Quiet. Deep. Ours.</p>
+</section>
 
-  <!-- ANNIVERSARY -->
-  <section class="day">
-    <h2>Our Anniversary 💍</h2>
-    <button onclick="anniversary(event)">Tap and smile</button>
-    <p id="anniv-text" class="soft-text" style="display:none;">I choose you. Every version of us.</p>
-  </section>
+<!-- ANNIVERSARY -->
+<section class="day">
+<h2>Our Anniversary 💍</h2>
+<button onclick="anniversary(event)">Tap & smile</button>
+<p id="annivText" class="soft-text" style="display:none;">I choose you. Always.</p>
+</section>
 
-  <!-- DUE DATE -->
-  <section class="day">
-    <h2>Until We Meet You 👶</h2>
-    <div style="text-align:center;">
-      <div id="heart-baby">💗</div>
-      <p class="soft-text">No rush. Just love.</p>
-    </div>
-  </section>
+<!-- DUE DATE -->
+<section class="day">
+<h2>Until We Meet You 👶</h2>
+<div id="babyHeart" class="center-item glow">💗</div>
+<p class="soft-text">No rush. Just love.</p>
+</section>
 
 </section>
 
 <script src="script.js"></script>
 
 <script>
-  function scrollToContent() {
-    document.getElementById("content").scrollIntoView({ behavior: "smooth" });
-  }
+function scrollToContent() {
+  document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
 
-  function spawnHeart(e) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerText = "💗";
-    h.style.left = e.clientX + "px";
-    h.style.top = e.clientY + "px";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 3000);
-  }
+function spawnHeart(e) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💗";
+  h.style.left = e.clientX + "px";
+  h.style.top = e.clientY + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 3000);
+}
 </script>
 
 </body>
