@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Until We Meet You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
@@ -69,7 +69,6 @@
       margin-bottom: 30px;
       position: relative;
       transition: 0.4s ease;
-      display: block;
     }
 
     .day img {
@@ -95,38 +94,22 @@
       color: #666;
     }
 
-    .interaction {
-      margin-top: 15px;
-    }
-
     .hidden {
       display: none;
     }
 
     .choice-btn {
-      margin: 6px;
+      margin-top: 10px;
       padding: 8px 16px;
       border-radius: 20px;
       border: none;
       background: #c47a6a;
       color: white;
     }
-
-    .heart {
-      position: fixed;
-      font-size: 18px;
-      animation: floatUp 3s ease forwards;
-      pointer-events: none;
-    }
-
-    @keyframes floatUp {
-      from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(-80px); }
-    }
   </style>
 </head>
 
-<body onclick="spawnHeart(event)">
+<body>
 
 <header>
   <div>
@@ -142,7 +125,6 @@
 <div class="countdown">
   <p id="annivCountdown"></p>
   <p id="babyCountdown"></p>
-  <p style="opacity:0.7;font-size:0.85rem;">Tap anywhere for a little love 💗</p>
 </div>
 
 <section id="content">
@@ -159,31 +141,31 @@
   <section class="day" data-date="2026-02-09">
     <h2>Chocolate Day 🍫</h2>
     <p>Better late than never.</p>
-    <div class="interaction">
-      <button class="choice-btn" onclick="show('choco')">Pick comfort</button>
-      <p id="choco" class="hidden">I hope today feels a little softer.</p>
-    </div>
+    <button class="choice-btn" onclick="document.getElementById('choco').classList.remove('hidden')">
+      A small comfort
+    </button>
+    <p id="choco" class="hidden">I hope today feels a little softer.</p>
   </section>
 
   <!-- TEDDY DAY -->
   <section class="day" data-date="2026-02-10">
     <div class="lock-label">Opens Feb 10</div>
     <h2>Teddy Day 🧸</h2>
-    <p>Comfort is coming.</p>
+    <p>This one is waiting.</p>
   </section>
 
   <!-- PROMISE DAY -->
   <section class="day" data-date="2026-02-11">
     <div class="lock-label">Opens Feb 11</div>
     <h2>Promise Day 💌</h2>
-    <p>Some things are worth waiting for.</p>
+    <p>This one will be ready when the day comes.</p>
   </section>
 
   <!-- HUG DAY -->
   <section class="day" data-date="2026-02-12">
     <div class="lock-label">Opens Feb 12</div>
     <h2>Hug Day 🤍</h2>
-    <p>A pause. A breath.</p>
+    <p>A pause is waiting here.</p>
   </section>
 
   <!-- VALENTINE -->
@@ -197,12 +179,14 @@
   <section class="day" data-date="2026-03-02">
     <div class="lock-label">Opens Mar 2</div>
     <h2>Our Anniversary 💍</h2>
+    <p>This chapter opens soon.</p>
   </section>
 
   <!-- DUE DATE -->
   <section class="day" data-date="2026-03-15">
     <div class="lock-label">When the time comes</div>
     <h2>Until We Meet You 👶</h2>
+    <p>Some moments don’t need rushing.</p>
   </section>
 
 </section>
@@ -210,18 +194,8 @@
 <script src="script.js"></script>
 
 <script>
-  function show(id) {
-    document.getElementById(id).style.display = "block";
-  }
-
-  function spawnHeart(e) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerText = "💗";
-    h.style.left = e.clientX + "px";
-    h.style.top = e.clientY + "px";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 3000);
+  function scrollToContent() {
+    document.getElementById("content").scrollIntoView({ behavior: "smooth" });
   }
 
   function updateCountdowns() {
