@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    body {
+      background: linear-gradient(-45deg, #faf7f5, #f3e6e8, #f7efe9);
+      background-size: 400% 400%;
+      animation: gradient 20s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .countdown {
       text-align: center;
       margin: 30px 20px;
@@ -32,10 +44,44 @@
       color: white;
       font-size: 0.95rem;
     }
+
+    .day {
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .locked {
+      opacity: 0.35;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .lock-label {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.9);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 18px;
+      animation: floatUp 3s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-80px); }
+    }
   </style>
 </head>
 
-<body>
+<body onclick="spawnHeart(event)">
 
 <header class="hero">
   <div>
@@ -48,10 +94,10 @@
   </div>
 </header>
 
-<!-- COUNTDOWNS -->
 <section class="countdown">
   <p id="annivCountdown"></p>
   <p id="babyCountdown"></p>
+  <p style="font-size:0.85rem; opacity:0.7;">Tap anywhere for a little love 💗</p>
 </section>
 
 <section id="content">
@@ -59,11 +105,7 @@
   <!-- US -->
   <section class="day" data-date="2026-02-09">
     <h2>Us</h2>
-    <p>
-      Before everything changed.<br>
-      Before we became “almost parents”.<br>
-      Just us — still us.
-    </p>
+    <p>Just us — still us.</p>
     <img src="images/couple_old.jpg.jpg">
     <img src="images/couple_maternity1.jpg.JPEG">
   </section>
@@ -71,113 +113,49 @@
   <!-- CHOCOLATE DAY -->
   <section class="day" data-date="2026-02-09">
     <h2>Chocolate Day 🍫</h2>
-    <p>
-      I missed Rose Day. I missed Propose Day.<br>
-      Apparently romance needs reminders now 😅<br><br>
-      So here I am — a little late, still very in love.
-    </p>
-
-    <div class="interaction">
-      <p>Pick one:</p>
-      <button class="choice-btn" onclick="show('chocoMsg')">🍫 Chocolate</button>
-      <button class="choice-btn" onclick="show('chocoMsg')">☕ Warm hug</button>
-      <p id="chocoMsg" class="hidden">
-        Whatever you choose, I hope today feels a little softer.
-      </p>
-    </div>
+    <p>Better late than never.</p>
+    <button class="choice-btn" onclick="show('chocoMsg')">Pick comfort</button>
+    <p id="chocoMsg" class="hidden">I hope today feels a little softer.</p>
   </section>
 
   <!-- TEDDY DAY -->
   <section class="day" data-date="2026-02-10">
+    <div class="lock-label">Opens Feb 10</div>
     <h2>Teddy Day 🧸</h2>
-    <p>Some days just need comfort.</p>
-
-    <div class="interaction">
-      <button class="choice-btn" onclick="show('hugMsg')">🤗 Tap for a hug</button>
-      <p id="hugMsg" class="hidden">
-        This is me holding you — even when I’m not in the room.
-      </p>
-    </div>
+    <p>Comfort is coming.</p>
   </section>
 
   <!-- PROMISE DAY -->
   <section class="day" data-date="2026-02-11">
+    <div class="lock-label">Opens Feb 11</div>
     <h2>Promise Day 💌</h2>
-    <p>Tap to see what I mean.</p>
-
-    <div class="interaction">
-      <button class="choice-btn" onclick="show('promiseList')">Tap</button>
-      <ul id="promiseList" class="hidden">
-        <li>I’ll learn with you</li>
-        <li>I’ll slow down when you need it</li>
-        <li>I’ll stay</li>
-      </ul>
-    </div>
+    <p>Some things are worth waiting for.</p>
   </section>
 
   <!-- HUG DAY -->
   <section class="day" data-date="2026-02-12">
+    <div class="lock-label">Opens Feb 12</div>
     <h2>Hug Day 🤍</h2>
-    <p>Press and hold for a moment.</p>
-
-    <div class="interaction">
-      <button class="choice-btn"
-        onmousedown="show('holdMsg')"
-        ontouchstart="show('holdMsg')">
-        Press & hold
-      </button>
-      <p id="holdMsg" class="hidden">
-        Some days don’t need fixing.<br>
-        They just need closeness.
-      </p>
-    </div>
+    <p>A pause. A breath.</p>
   </section>
 
   <!-- VALENTINE -->
   <section class="day" data-date="2026-02-14">
+    <div class="lock-label">Opens Feb 14</div>
     <h2>Valentine’s Day ❤️</h2>
-    <p>
-      This year looks different.<br>
-      Quieter. Deeper.<br><br>
-      And I wouldn’t trade it for anything.
-    </p>
     <img src="images/couple_maternity2.jpg.JPEG">
-
-    <div class="interaction">
-      <p>
-        This isn’t a question.<br>
-        It’s a thank you.
-      </p>
-    </div>
   </section>
 
   <!-- ANNIVERSARY -->
   <section class="day" data-date="2026-03-02">
+    <div class="lock-label">Opens Mar 2</div>
     <h2>Our Anniversary 💍</h2>
-
-    <div class="interaction">
-      <button class="choice-btn" onclick="show('annivMsg')">Then & Now</button>
-      <p id="annivMsg" class="hidden">
-        I’d choose you then.<br>
-        I’d choose you now.<br>
-        I’d choose you even on the tired days.
-      </p>
-    </div>
   </section>
 
   <!-- DUE DATE -->
   <section class="day" data-date="2026-03-15">
+    <div class="lock-label">When the time comes</div>
     <h2>Until We Meet You 👶</h2>
-
-    <div class="interaction">
-      <button class="choice-btn" onclick="show('babyMsg')">
-        🌱 Open when you’re ready
-      </button>
-      <p id="babyMsg" class="hidden">
-        There’s no deadline on love.<br>
-        We’ll meet you when we meet you.
-      </p>
-    </div>
   </section>
 
 </section>
@@ -189,27 +167,34 @@
     document.getElementById(id).style.display = "block";
   }
 
+  function spawnHeart(e) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💗";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+
   function updateCountdowns() {
     const today = new Date();
     today.setHours(0,0,0,0);
+    const anniv = new Date("2026-03-02");
+    const baby = new Date("2026-03-15");
+    const oneDay = 86400000;
 
-    const anniversary = new Date("2026-03-02");
-    const dueDate = new Date("2026-03-15");
+    const a = Math.ceil((anniv - today)/oneDay);
+    const b = Math.ceil((baby - today)/oneDay);
 
-    const oneDay = 1000 * 60 * 60 * 24;
+    if (a >= 0) annivCountdown.innerText = a + " days until our anniversary 💍";
+    if (b >= 0) babyCountdown.innerText = b + " days until we meet our baby 👶";
 
-    const annivDays = Math.ceil((anniversary - today) / oneDay);
-    const babyDays = Math.ceil((dueDate - today) / oneDay);
-
-    if (annivDays >= 0) {
-      document.getElementById("annivCountdown").innerText =
-        annivDays + " days until our anniversary 💍";
-    }
-
-    if (babyDays >= 0) {
-      document.getElementById("babyCountdown").innerText =
-        babyDays + " days until we meet our baby 👶";
-    }
+    document.querySelectorAll(".day").forEach(sec => {
+      const d = new Date(sec.dataset.date);
+      if (today < d) sec.classList.add("locked");
+      else sec.classList.remove("locked");
+    });
   }
 
   updateCountdowns();
