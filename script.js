@@ -8,12 +8,15 @@ const today = new Date();
 today.setHours(0, 0, 0, 0);
 
 document.querySelectorAll(".day").forEach(section => {
-  const unlockDate = new Date(section.dataset.date);
+  const unlockDate = section.dataset.date
+    ? new Date(section.dataset.date)
+    : null;
+
+  if (!unlockDate) return;
+
   unlockDate.setHours(0, 0, 0, 0);
 
-  if (today < unlockDate) {
-    section.classList.add("locked");
-  } else {
-    section.classList.remove("locked");
+  if (today >= unlockDate) {
+    section.classList.add("unlocked");
   }
 });
